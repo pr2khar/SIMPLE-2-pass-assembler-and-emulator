@@ -1,0 +1,177 @@
+/*****************************************************************************
+TITLE: Claims																					
+Declaration of Authorship -----
+											
+AUTHOR:  PRAKHAR SHUKLA
+ROLL NUMBER : 2201CS54
+
+This txt file, CLAIMS.txt, is part of the MiniProject Phase - I of CS210 at the 
+department of Computer Science and Engg, IIT Patna.
+*****************************************************************************/
+
+
+Files:
+==========
+Both the c++ files submitted - assembler.cpp and emulator.cpp - along with this claims document have my name and student id at the start, along with a declaration of authorship.
+
+The evidence for Assembler including the output files from the 5 test examples used has also been uploaded. 
+They are test01(3 output files), test02(3 output files), test03(3 output files), test04(3 output files), test05(3 output files).
+The 3 output files are the .log log file, .o object file and .lst listing file.
+
+All the test files have been tested and work properly. 
+The evidence for Emulator including the output files from the 5 test examples used has also been uploaded.
+They are test01(1 output file), test02(1 output file), test03(1 output file), test04(1 output file), test05(1 output file).
+The 1 output file is the .trace trace file.
+
+*Both of my c++ programs did not show any errors and warnings when compiled with
+gcc -std=c89 -pedantic and gcc -std=c89 -pedantic -W -Wall -Wpointer-arith -Wwrite-strings -Wstrict-prototypes standard  or equilvalent ....or gcc ... or g++.
+
+
+=============================
+Program format and structure:
+=============================
+1. The assembler:
+
+    * with two data structures to store the label, mnemonic and operand in each line in a map using a struct for information storage and also the 
+      mnemonic table storing the respective opcode and expected operand number.
+    * uses a single routine for both passes.
+    * diagnoses all common errors like invalid labels, mnemonics, operands, extra or missing operands etc and prints them to terminal.
+    * displays warnings likee unused labels, lack of HALT instruction etc in .log file.
+    * consistent and sensible formatting with sensible program structure. 
+    * sensible variable, function & type names with explanatory comments.
+	* advanced listing file.
+	* assembles test programs.
+	* can implement and demonstrate the instruction SET.
+
+2. The emulator:
+
+    * with three data structures to store respectively the memory, mnemonic table with expected operands and a machine_code storage container.
+    * loads trace file. 
+    * by giving the instructions like "-before/-after" , the program can produce memory dump before/after execution.
+    * by giving the instruction like "-trace", the program prints the result of program executed.
+    * detects errant programs.
+
+
+=============================
+Testing:
+=============================
+
+1. The assembler:
+
+I have tested five examples shown as below. 
+
+
+They were tested without any errors detected and produced three output files - listing file, 
+warning log file and machine readable object file, for each example. 
+
+
+ 
+
+1)
+#Input:./asm 
+	test01.asm
+#Output: 
+a. test01.lst
+b. test01.log
+c. test01.o
+
+2)
+#Input:./asm 
+	test02.asm
+#Output: 
+a. test02.lst 
+b. test02.log
+c. test02.o
+
+3)
+#Input:./asm 
+	test03.asm
+#Output: 
+a. test03.lst
+b. test03.log
+c. test03.o
+
+4)
+#Input:./asm 
+	test04.asm
+#Output: 
+a. test04.lst
+b. test04.log
+c. test04.o
+
+4)
+#Input:./asm 
+	test05.asm
+#Output: 
+a. test05.lst
+b. test05.log
+c. test05.o
+
+
+2. The emulator:
+
+I have tested five examples shown as below. 
+
+
+They were tested without any errors detected and produced one output file on generating trace.
+
+1)
+#Input:./emu -trace test01.o
+#Output: 
+a. test01.trace
+
+	this is a bubble sort algorithm that takes in input 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 0 and returns them sorted.
+	can be verified by using the -before and -after commands to check the memory dumps before and after execution.
+
+2)
+#Input:./emu -trace test02.o
+#Output: 
+printing of register values and SIMPLE instruction code after every instruction
+a. test02.trace
+	
+	this is a simple left shift algorithm. it takes two values and loads value1<<value2 in Accumulator.
+
+3)
+#Input:./emu -trace test03.o
+#Output: 
+printing of register values and SIMPLE instruction code after every instruction
+a. test03.trace
+
+	this is a program to show the branch less than zero functionality.
+	after each branch, the value in Accumulator increases and on becoming non negative, it does not branch and terminates.
+
+4)
+#Input:./emu -trace test04.o
+#Output: 
+printing of register values and SIMPLE instruction code after every instruction
+a. test04.trace
+	
+	this is a program that stores the value of the larger of two variables in registers A and B to memory location 0.
+
+
+5)
+#Input:./emu -trace test05.o
+#Output: 
+printing of register values and SIMPLE instruction code after every instruction
+a. test05.trace
+
+	this is a while loop implementation
+	implements the SIMPLE equivalent of 
+		int i = -500;
+		while(i<0)
+		{
+			i++;
+		}
+
+
+6)
+#Input:./emu -trace test06.o
+#Output: 
+printing of register values and SIMPLE instruction code after every instruction
+a. test06.trace
+
+	this is a program that adds two numbers.
+	two numbers are first stored in two memory locations. 
+	Their values are loaded into registers A and B through the ldnl (load non local) instruction.
+	The sum of the values is stored in memory location 0.
+
